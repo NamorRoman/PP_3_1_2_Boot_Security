@@ -1,12 +1,12 @@
 package ru.kata.spring.boot_security.demo.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PatchMapping;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.security.repositories.UserRepository;
 import java.util.List;
@@ -51,9 +51,9 @@ public class UserService implements UserDetailsService {
         userRepository.delete(user);
     }
 
+
     @Transactional
-    public void update(Long id, User user) {
-        user.setId(id);
+    public void update(User user) {
         userRepository.save(user);
     }
 

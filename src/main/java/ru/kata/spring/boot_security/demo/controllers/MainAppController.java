@@ -11,12 +11,12 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 
 
 @Controller
-public class TestController {
+public class MainAppController {
 
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    public TestController(UserService userService) {
+    public MainAppController(UserService userService) {
         this.userService = userService;
     }
 
@@ -42,7 +42,7 @@ public class TestController {
 
     @PatchMapping("admin/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userService.update(id, user);
+        userService.update(user);
         return "redirect:/admin";
     }
 
