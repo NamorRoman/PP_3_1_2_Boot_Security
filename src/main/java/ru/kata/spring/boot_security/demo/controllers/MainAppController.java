@@ -13,20 +13,20 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 @Controller
 public class MainAppController {
 
-    private UserService userService;
+    UserService userService;
 
     @Autowired
     public MainAppController(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping("/admin")
+    @GetMapping("/admin")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userService.findAll());
         return "show-all-users";
     }
 
-    @RequestMapping("/user")
+    @GetMapping("/user")
     public String userPage1(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
@@ -34,7 +34,7 @@ public class MainAppController {
         return "user";
     }
 
-    @RequestMapping("admin/{id}/edit_user")
+    @GetMapping("admin/{id}/edit_user")
     public String showUserById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.getByID(id));
         return "edit-user";
@@ -52,7 +52,7 @@ public class MainAppController {
         return "redirect:/admin";
     }
 
-    @RequestMapping("admin/new_user")
+    @GetMapping("admin/new_user")
     public String newUser(@ModelAttribute("user") User user) {
         return "new-user";
     }

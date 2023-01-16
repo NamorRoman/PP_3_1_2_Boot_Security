@@ -3,8 +3,6 @@ package ru.kata.spring.boot_security.demo.models;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -69,7 +67,8 @@ public class User implements UserDetails {
     }
 
     public void setPassword(String password) {
-        this.password = (new BCryptPasswordEncoder().encode(password));
+//        this.password = (new BCryptPasswordEncoder().encode(password));
+        this.password = password;
     }
 
     public Integer getAge() {

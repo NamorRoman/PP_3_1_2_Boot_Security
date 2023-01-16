@@ -7,7 +7,6 @@
 <body>
 
 <form th:method="POST" th:action="@{/admin/save_new_user}" th:object="${user}">
-<!--<form th:method="POST" th:action="@{/save_new_user}" th:object="${user}">-->
 
   <label for="username" >Enter the username</label>
   <input type="text" th:field="*{username}" id="username">
@@ -30,15 +29,7 @@
   <br>
 
 
-
-
-
-
-
-
-<!---->
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-<!--  -->
 
   <input type="submit" value="Add user" /> <input type="reset" value="Reset"/>
 
@@ -53,12 +44,6 @@
 <input type="button" value="Logout"
        onclick="window.location.href = '/logout'"
 />
-
-
-
-<!--<input type="button" value="Logout"-->
-<!--       onclick="window.location.href = '/logout'"-->
-<!--/>-->
 
 </body>
 </html>
